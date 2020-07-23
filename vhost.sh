@@ -59,4 +59,19 @@ mysql -u root -pdadfba16 <  $1.sql
 #avec welcome sur site1
 echo -e "\e[96m index/html \e[0m"
 echo "<h1>welcome chez $1</h1>" >> /home/$1/www/index.html
-systemctl status apache2
+systemctl systemctl restart apache2
+
+ sed -i "159s/<Directory \/\>/# <Directory \/\>/" /etc/apache2/apache2.conf
+ 4 sed -i "160s/        Options FollowSymLinks/#        Options FollowSymLinks/" /etc/apache2/apache2.conf
+ 5 sed -i "161s/        AllowOverride None/#        AllowOverride None/" /etc/apache2/apache2.conf
+ 6 sed -i "162s/Require all denied/# Require all denied/" /etc/apache2/apache2.conf
+ 7 sed -i "159s/<\/\Directory>/# <\/\Directory>/" /etc/apache2/apache2.conf
+ 8
+ 9 sed -i "170s/<Directory \/\var\/\www\/\>/# <Directory \/\var\/\www\/\>/" /etc/apache2/apache2.conf
+10 sed -i "171s/        Options Indexes FollowSymLinks/#        Options Indexes FollowSymLinks/" /etc/apache2/apache2.conf
+11 sed -i "172s/        AllowOverride None/#        AllowOverride None/" /etc/apache2/apache2.conf
+12 sed -i "173s/        Require all granted/#        Require all granted/" /etc/apache2/apache2.conf
+13 sed -i "174s/<\/\Directory>/# <\/\Directory>/" /etc/apache2/apache2.conf
+14 systemctl restart apache2
+
+
