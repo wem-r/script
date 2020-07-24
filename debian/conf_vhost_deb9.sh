@@ -1,6 +1,6 @@
 #!/bin/bash
 # script qui install un vhost complet (site1) en mode mutualisé local
-# v1.1 par T.CHERRIER - 23/07/2020
+# Wemy - TSSR2020 - 23/07/2020
 
 domain="deb9CEF80.lan"
 
