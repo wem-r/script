@@ -1,6 +1,8 @@
 #!/bin/bash
 # script qui install un vhost complet (site1) en mode mutualisé local
 # Wemy -TSSR2020 - 23/07/2020
+# https://wemy.ninja/script et https://github.com/wem-r/script
+clear
 
 if [ $EUID -ne 0 ]; then
   echo "\e[96m Le script doit être lancé en root: # sudo $0 \e[0m" 1>&2
