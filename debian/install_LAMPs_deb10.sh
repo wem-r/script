@@ -1,6 +1,6 @@
 #!/bin/bash
 # Script LAMPs Install deb10
-# Remy RATRON - TSSR2020 - 23/07/2020
+# Wemy - TSSR2020 - 23/07/2020
 # https://wemy.ninja/script et https://github.com/wem-r/script
 clear 
 
