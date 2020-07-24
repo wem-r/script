@@ -1,6 +1,6 @@
 #!/bin/bash
 # script qui install un vhost complet (site1) en mode mutualisé local
-# v1.1 par T.CHERRIER - 23/07/2020
+# Wemy -TSSR2020 - 23/07/2020
 
 if [ $EUID -ne 0 ]; then
   echo "\e[96m Le script doit être lancé en root: # sudo $0 \e[0m" 1>&2
