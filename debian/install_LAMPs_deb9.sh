@@ -2,6 +2,7 @@
 # Script Automatisation installation
 # Wemy - TSSR2020 - 23/07/2020
 # https://wemy.ninja/script et https://github.com/wem-r/script
+clear
 
 # Install Apache2
 echo -e "\e[96m Installation Apache2 \e[0m"
