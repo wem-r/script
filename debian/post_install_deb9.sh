@@ -103,7 +103,7 @@ echo -e "\e[96m Installation de webmin \e[0m"
 cd /
 wget http://prdownloads.sourceforge.net/webadmin/webmin_1.941_all.deb
 dpkg -i webmin_1.941_all.deb 
-apt -f install
+apt -y -f install
 rm -f webmin_1.953_all.deb
 echo
  
