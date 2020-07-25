@@ -130,17 +130,17 @@ echo
 echo -e "\e[96m Confiduration fichier interfaces \e[0m"
 cd /
 rm /etc/network/interfaces
-echo "source /etc/network/interfaces.d/*" >>/etc/network/interfaces
-echo "" >>/etc/network/interfaces
-echo "# The loopback network interfaces" >>/etc/network/interfaces
-echo "auto lo" >>/etc/network/interfaces
-echo "iface lo inet loopback" >>/etc/network/interfaces
-echo "" >>/etc/network/interfaces
-echo "# The primary network interface" >>/etc/network/interfaces
-echo "allow-hotplug ens33" >>/etc/network/interfaces
-echo "iface ens33 inet static" >>/etc/network/interfaces
-echo "  address $ipaddress" >>/etc/network/interfaces
-echo "  netmask $netmask" >>/etc/network/interfaces
-echo "  gateway $gateway" >>/etc/network/interfaces
+echo "source /etc/network/interfaces.d/*
+
+# The loopback network interfaces
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug ens33
+iface ens33 inet static
+	address $ipaddress
+	netmask $netmask
+	gateway $gateway" >>/etc/network/interfaces
 
 reboot
