@@ -41,12 +41,12 @@ echo
 # modification du bashrc
 echo -e "\e[96m Modification du .bashrc \e[0m"
 cp /root/.bashrc /root/.bashrc.bak
-sed -i "7s/# / /" /root/.bashrc
-sed -i "8s/# / /" /root/.bashrc
-sed -i "9s/# / /" /root/.bashrc
-sed -i "10s/# / /" /root/.bashrc
-sed -i "11s/# / /" /root/.bashrc
-sed -i "14s/# / /" /root/.bashrc
+sed -i "s/# export/ export/" /root/.bashrc
+sed -i "s/# eval/ eval/" /root/.bashrc
+sed -i "s/# alias ls/ alias ls/" /root/.bashrc
+sed -i "s/# alias ll/ alias ll/" /root/.bashrc
+sed -i "s/# alias l/ alias l/" /root/.bashrc
+sed -i "s/# alias rm/ alias rm/" /root/.bashrc
 echo
 
 # apt update & upgrade
