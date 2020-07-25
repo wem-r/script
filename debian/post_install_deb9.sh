@@ -27,12 +27,15 @@ fi
 echo
 echo
 echo
-echo -e "\e[96m ==> Choix de l'addresse ip (exemple 192.168.20.110) : \e[0m"
+echo -e "\e[96m ==> Choix de l'addresse ip (ex 192.168.20.110) : \e[0m"
 read ipaddress
-echo -e "\e[96m ==> Choix du netmask (exemple: 255.255.255.0) : \e[0m"
+echo -e "\e[96m ==> Choix du netmask (ex 255.255.255.0) : \e[0m"
 read netmask
-echo -e "\e[96m ==> choix de la gateway (exemple 192.168.20.254): \e[0m"
+echo -e "\e[96m ==> choix de la gateway (ex 192.168.20.254): \e[0m"
 read gateway
+echo
+echo -e "\e[96m ==> choix du server DNS (ex 1.1.1.1): \e[0m"
+read dns
 echo
 
 # modification du bashrc
@@ -123,7 +126,7 @@ echo
 echo -e "\e[96m Confiduration resolv.conf \e[0m"
 cd /
 rm /etc/resolv.conf
-echo "nameserver 1.1.1.1" >>/etc/resolv.conf
+echo "nameserver $dns" >>/etc/resolv.conf
 echo
 
 #Configuration carte reseau
