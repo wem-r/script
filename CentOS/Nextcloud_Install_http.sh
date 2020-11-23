@@ -174,7 +174,7 @@ printf '=%.0s' $(seq 1 $(tput cols))
 echo -e "\e[om "
 echo -e "\t \v \e[96m  Making of the data directory \e[0m \v"
 mkdir /var/www/html/nextcloud/data
-echo -e "\t \v \e[96m  Change of owner \e[0m \v"
+echo -e "\t \v \e[96m  Changing the owner of /var/www/html/nextcloud to apache \e[0m \v"
 chown -R apache:apache /var/www/html/nextcloud
 systemctl restart httpd.service
 
