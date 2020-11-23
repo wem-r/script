@@ -227,9 +227,12 @@ sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 1024M/g' /etc/php.ini
 sed -i 's/memory_limit\ =\ 128M/memory_limit\ =\ 512M/g' /etc/php.ini
 systemctl restart php-fpm.service
 
+echo -e "\e[96m Your IP Address is: "
+ip --brief a| awk '{ print $3}' | cut -d/ -f1
+echo -e "\t \v \e[96m  \e[0m"
 
 echo
 echo -e "\t \v \e[96m ===================================== \e[0m"
-echo -e "\t \e[96m            Installation finished            \e[0m"
-echo -e "\t \e[96m       https:://IP_ADDRESS/nextcloud       \e[0m"
+echo -e "\t \e[96m          Installation finished            \e[0m"
+echo -e "\t \e[96m           https:://IP_ADDRESS/       \e[0m"
 echo -e "\t \e[96m  ===================================== \e[0m \v"
