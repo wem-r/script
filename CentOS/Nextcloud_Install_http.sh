@@ -105,7 +105,7 @@ echo -e "\e[96m "
 printf '=%.0s' $(seq 1 $(tput cols))
 echo -e "\e[om "
 echo -e "\t \v \e[96m  Installing php modules : php | php-gd | php-mbstring | php-intl | php-pecl-apcu | php-mysqlnd | php-opcache | php-json | php-zip | php-redis | php-imagick \e[0m \v"
-dnf install -y php php-gd php-mbstring php-intl php-pecl-apcu php-mysqlnd php-opcache php-json php-zip
+dnf install -y php php-gd php-mbstring php-intl php-pecl-apcu php-mysqlnd php-opcache php-json php-zip php-posix
 dnf install -y php-redis php-imagick
 
 
