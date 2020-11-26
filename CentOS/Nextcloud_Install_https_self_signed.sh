@@ -226,8 +226,29 @@ restorecon -R '/var/www/html/nextcloud/'
 
 setsebool -P httpd_can_network_connect on
 
+echo -e "\e[96m "
+printf '=%.0s' $(seq 1 $(tput cols))
+echo -e "\e[om "
+echo -e "\t \v \e[96m  changing PHP settings \e[0m"
+echo -e "\t \v \e[96m  Max file siez : 1GB \e[0m \v"
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 1024M/g' /etc/php.ini
+echo -e "\t \v \e[96m  Memory Limit : 512M \e[0m \v"
 sed -i 's/memory_limit\ =\ 128M/memory_limit\ =\ 512M/g' /etc/php.ini
+echo -e "\t \v \e[96m  Configuring memecache \e[0m \v"
+sed -i 's/);/ /g' test
+echo "   'memcache.local' => '\\OC\\Memcache\\Redis', /* contient les scripts php précompilés */
+   'filelocking.enabled' => 'true',
+   'memcache.distributed' => '\\OC\\Memcache\\Redis',
+   'memcache.locking' => '\\OC\\Memcache\\Redis',
+   'redis' =>
+        array (
+                'host' => 'localhost',
+                'port' => 6379,
+                'timeout' => 0,
+                'dbindex' => 0,
+                ),
+);">> /var/www/html/nextcloud/config/config.php
+
 systemctl restart php-fpm.service
 
 echo -e "\e[96m Your IP Address is: "
