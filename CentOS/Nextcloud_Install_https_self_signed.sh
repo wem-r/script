@@ -91,6 +91,9 @@ echo "<VirtualHost *:80>
         <IfModule mod_dav.c>
         Dav off
         </IfModule>
+	<IfModule mod_headers.c>
+        Header always set Strict-Transport-Security "max-age=15552000; includeSubDomains"
+        </IfModule>
     </directory>
     SSLEngine on
     SSLCertificateFile /etc/pki/tls/certs/nextcloud.crt
