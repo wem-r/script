@@ -234,20 +234,6 @@ echo -e "\t \v \e[96m  Max file siez : 1GB \e[0m \v"
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 1024M/g' /etc/php.ini
 echo -e "\t \v \e[96m  Memory Limit : 512M \e[0m \v"
 sed -i 's/memory_limit\ =\ 128M/memory_limit\ =\ 512M/g' /etc/php.ini
-echo -e "\t \v \e[96m  Configuring memecache \e[0m \v"
-sed -i 's/);/ /g' /var/www/html/nextcloud/config/config.php
-echo "   'memcache.local' => '\\OC\\Memcache\\Redis', /* contient les scripts php précompilés */
-   'filelocking.enabled' => 'true',
-   'memcache.distributed' => '\\OC\\Memcache\\Redis',
-   'memcache.locking' => '\\OC\\Memcache\\Redis',
-   'redis' =>
-        array (
-                'host' => 'localhost',
-                'port' => 6379,
-                'timeout' => 0,
-                'dbindex' => 0,
-                ),
-);">> /var/www/html/nextcloud/config/config.php
 
 systemctl restart php-fpm.service
 
