@@ -235,7 +235,7 @@ sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 1024M/g' /etc/php.ini
 echo -e "\t \v \e[96m  Memory Limit : 512M \e[0m \v"
 sed -i 's/memory_limit\ =\ 128M/memory_limit\ =\ 512M/g' /etc/php.ini
 echo -e "\t \v \e[96m  Configuring memecache \e[0m \v"
-sed -i 's/);/ /g' test
+sed -i 's/);/ /g' /var/www/html/nextcloud/config/config.php
 echo "   'memcache.local' => '\\OC\\Memcache\\Redis', /* contient les scripts php précompilés */
    'filelocking.enabled' => 'true',
    'memcache.distributed' => '\\OC\\Memcache\\Redis',
