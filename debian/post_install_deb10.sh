@@ -25,15 +25,21 @@ else
 fi
 
 echo
+echo -e "\e[96m ==> Available Interface \e[0m"
 echo
-echo -e "\e[96m ==> Choix de l'addresse ip (exemple 192.168.20.110) : \e[0m"
+ip link show
+echo
+echo -e "\e[96m ==> Choose an interface (exemple: ens33) : \e[0m"
+read interface
+echo
+echo -e "\e[96m ==> IP Address (ex: 192.168.20.110) : \e[0m"
 read ipaddress
-echo -e "\e[96m ==> Choix du netmask (exemple: 255.255.255.0) : \e[0m"
+echo -e "\e[96m ==> Netmask (ex: 255.255.255.0) : \e[0m"
 read netmask
-echo -e "\e[96m ==> choix de la gateway (exemple 192.168.20.254): \e[0m"
+echo -e "\e[96m ==> Gateway (ex: 192.168.20.254): \e[0m"
 read gateway
 echo
-echo -e "\e[96m ==> choix du DNS (exemple 1.1.1.1): \e[0m"
+echo -e "\e[96m ==> DNS Server (ex: 1.1.1.1): \e[0m"
 read dns
 echo
 
@@ -128,20 +134,20 @@ echo
 echo -e "\e[96m Confiduration fichier interfaces \e[0m"
 cd /
 rm /etc/network/interfaces
-echo "# This file describes the network interfaces available on your system" >>/etc/network/interfaces
-echo "# and how to activate them. For more information, see interfaces(5)." >>/etc/network/interfaces
-echo "" >>/etc/network/interfaces
-echo "source /etc/network/interfaces.d/*" >>/etc/network/interfaces
-echo "" >>/etc/network/interfaces
-echo "# The loopback network interfaces" >>/etc/network/interfaces
-echo "auto lo" >>/etc/network/interfaces
-echo "iface lo inet loopback" >>/etc/network/interfaces
-echo "" >>/etc/network/interfaces
-echo "# The primary network interface" >>/etc/network/interfaces
-echo "allow-hotplug ens33" >>/etc/network/interfaces
-echo "iface ens33 inet static" >>/etc/network/interfaces
-echo "  address $ipaddress" >>/etc/network/interfaces
-echo "  netmask $netmask" >>/etc/network/interfaces
-echo "  gateway $gateway" >>/etc/network/interfaces
+echo "# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interfaces
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug $interface
+iface $interface inet static
+  address $ipaddress
+  netmask $netmask
+  gateway $gateway" >>/etc/network/interfaces
 
 reboot
