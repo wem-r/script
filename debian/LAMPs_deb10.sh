@@ -85,9 +85,9 @@ a2enmod rewrite
 a2enmod headers
 a2dissite 000-default
 
-echo "<h1 style="text-align: center;"><strong>Welcome</strong></h1>
+echo "<h1 style=\"text-align: center;\"><strong>Welcome</strong></h1>
 <hr />
-<p style="text-align: center;"><iframe src="//www.youtube.com/embed/dQw4w9WgXcQ" width="560" height="314" allowfullscreen="allowfullscreen"></iframe></p>">>/home/$username/www/index.html
+<p style=\"text-align: center;\"><iframe src=\"//www.youtube.com/embed/dQw4w9WgXcQ\" width=\"560\" height=\"314\" allowfullscreen=\"allowfullscreen\"></iframe></p>">> /home/$username/www/index.html
 
 a2ensite website.conf
 
