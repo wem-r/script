@@ -91,17 +91,8 @@ echo "<h1 style=\"text-align: center;\"><strong>Welcome</strong></h1>
 
 a2ensite website.conf
 
-sed -i "/$159/ s/^/# /" /etc/apache2/apache2.conf
-sed -i "/$160/ s/^/# /" /etc/apache2/apache2.conf
-sed -i "/$161/ s/^/# /" /etc/apache2/apache2.conf
-sed -i "/$162/ s/^/# /" /etc/apache2/apache2.conf
-sed -i "/$163/ s/^/# /" /etc/apache2/apache2.conf
-
-sed -i "/$170/ s/^/# /" /etc/apache2/apache2.conf
-sed -i "/$171/ s/^/# /" /etc/apache2/apache2.conf
-sed -i "/$172/ s/^/# /" /etc/apache2/apache2.conf
-sed -i "/$173/ s/^/# /" /etc/apache2/apache2.conf
-sed -i "/$174/ s/^/# /" /etc/apache2/apache2.conf
+sed -i "159,163 {s/^/#/}" /etc/apache2/apache2.conf
+sed -i "170,174 {s/^/#/}" /etc/apache2/apache2.conf
 
 systemctl restart apache2
 
