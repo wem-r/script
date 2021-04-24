@@ -1,6 +1,6 @@
 
 #!/bin/bash
-# Script LAMPs Install deb10
+# Script full install LAMPs + GLPI on Debian 10
 # Wemy - 24/04/2021
 # https://wemy.ninja/script et https://github.com/wem-r/script
 clear 
