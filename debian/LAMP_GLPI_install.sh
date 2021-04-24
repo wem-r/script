@@ -104,7 +104,6 @@ systemctl restart apache2
 
 # Install MySQL
 echo -e "\e[96m MySQL installation \e[0m"
-echo
 apt install mariadb-server -y
 echo
 mysql_secure_installation<<EOF
