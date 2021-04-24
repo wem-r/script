@@ -102,9 +102,9 @@ sed -i "170,174 {s/^/#/}" /etc/apache2/apache2.conf
 
 systemctl restart apache2
 
-echo 
 # Install MySQL
 echo -e "\e[96m MySQL installation \e[0m"
+echo
 apt install mariadb-server -y
 echo
 mysql_secure_installation<<EOF
