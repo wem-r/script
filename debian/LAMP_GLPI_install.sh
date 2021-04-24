@@ -1,3 +1,4 @@
+
 #!/bin/bash
 # Script LAMPs Install deb10
 # Wemy - 24/04/2021
@@ -119,6 +120,13 @@ EOF
 systemctl enable mariadb
 echo
 
+echo "CREATE DATABASE glpidb;" >>glpidatabase.sql
+echo "GRANT ALL PRIVILEGES ON glpidb.* TO 'glpiuser'@'localhost' IDENTIFIED BY 'glpipwd';" >>glpidatabase.sql
+echo "FLUSH PRIVILEGES;" >>glpidatabase.sql
+mysql -u root -pmysql_root_password <  glpidatabase.sql
+rm glpidatabase.sql
+echo
+
 # install de php
 echo -e "\e[96m php Installation \e[0m"
 apt update
@@ -167,5 +175,3 @@ echo -e "\e[96m ==> +++++++++++++++++++++++++++++++++ \e[0m"
 echo
 echo
 echo
-
-
