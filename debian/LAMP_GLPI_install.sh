@@ -205,7 +205,7 @@ echo -e "\e[96m ==> GLPI Database Name :\e[31m $glpidbname \e[0m"
 echo -e "\e[96m ==> GLPI MySQL User :\e[31m $glpiuser \e[0m"
 echo -e "\e[96m ==> GLPI MySQL User Password :\e[31m $glpiuserpassword \e[0m"
 echo
-echo -e "\e[96m ==> The Self-Signed Certificate is located here :\e[31m /etc/ssl/ \e[0m"
+echo -e "\e[96m ==> The Self-Signed Certificate is located here :\e[31m /etc/ssl/glpi.pem \e[0m"
 echo
 echo -e "\e[96m ==========================================================  \e[0m"
 echo
