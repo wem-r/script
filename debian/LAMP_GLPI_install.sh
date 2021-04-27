@@ -23,7 +23,6 @@ else
         echo -e "\e[91m ==================================================================== \e[0m"
         exit 1
 fi
-IPAddress=$(ifconfig | grep broadcast | awk '{print $2}')
 
 #=================================================================================================================================
 #=================================================================================================================================
@@ -39,12 +38,23 @@ echo
 echo
 echo
 echo
-echo -e "\e[96m ==> If you want to use custom passwords and Database name, hit ^C and edit this scipt \e[0m"
+echo -e "\e[96m ==> If you want to use custom passwords and Database name, hit ^C and edit this scipt (Lines 50, 52, 54 and 56) \e[0m"
 echo
 echo -e "\e[96m ==> Otherwise, \e[33mPress Enter to continue \e[0m"
 echo -e "\e[96m ==> Login infos at the end \e[0m"
 echo
 read yeahgoahead
+
+IPAddress=$(ifconfig | grep broadcast | awk '{print $2}')
+#MySQL Root Password
+mysqlrootpwd=mysql_root_password
+#GLPI Database Name
+glpidbname=glpidb
+#GLPI MySQL User
+glpiuser=glpiuser
+#GLPI MySQL User Password
+glpiuserpassword=glpipwd
+
 
 echo
 echo -e "\e[96m	================================================================================ \e[0m"
@@ -132,8 +142,8 @@ apt install mariadb-server -y
 mysql_secure_installation<<EOF
 
 y
-mysql_root_password
-mysql_root_password
+$mysqlrootpwd
+$mysqlrootpwd
 y
 y
 y
@@ -142,10 +152,10 @@ EOF
 systemctl enable mariadb
 echo
 
-echo "CREATE DATABASE glpidb;" >>glpidatabase.sql
-echo "GRANT ALL PRIVILEGES ON glpidb.* TO 'glpiuser'@'localhost' IDENTIFIED BY 'glpipwd';" >>glpidatabase.sql
+echo "CREATE DATABASE $glpidbname;" >>glpidatabase.sql
+echo "GRANT ALL PRIVILEGES ON $glpidbname.* TO '$glpiuser'@'localhost' IDENTIFIED BY '$glpiuserpassword';" >>glpidatabase.sql
 echo "FLUSH PRIVILEGES;" >>glpidatabase.sql
-mysql -u root -pmysql_root_password <  glpidatabase.sql
+mysql -u root -p$mysqlrootpwd <  glpidatabase.sql
 rm glpidatabase.sql
 echo
 
@@ -189,11 +199,11 @@ echo -e "\e[96m | |\/| | \_. |\__ \| (_) || |__  \e[0m"
 echo -e "\e[96m |_|  |_| |__/ |___/ \__\_\|____| \e[0m"
 echo
 echo
-echo -e "\e[96m ==> MySQL Root Password : \e[31mmysql_root_password \e[0m"
+echo -e "\e[96m ==> MySQL Root Password : \e[31m$mysqlrootpwd \e[0m"
 echo
-echo -e "\e[96m ==> GLPI Database Name :\e[31m glpidb \e[0m"
-echo -e "\e[96m ==> GLPI MySQL User :\e[31m glpiuser \e[0m"
-echo -e "\e[96m ==> GLPI MySQL User Password :\e[31m glpipwd \e[0m"
+echo -e "\e[96m ==> GLPI Database Name :\e[31m $glpidbname \e[0m"
+echo -e "\e[96m ==> GLPI MySQL User :\e[31m $glpiuser \e[0m"
+echo -e "\e[96m ==> GLPI MySQL User Password :\e[31m $glpiuserpassword \e[0m"
 echo
 echo -e "\e[96m ==> The Self-Signed Certificate is located here :\e[31m /etc/ssl/ \e[0m"
 echo
