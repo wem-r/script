@@ -46,15 +46,27 @@ echo -e "\e[96m ==> Login infos at the end \e[0m"
 echo
 read yeahgoahead
 
-# Install Apache2
-echo -e "\e[96m Installation Apache2 \e[0m"
+echo
+echo -e "\e[96m	================================================================================ \e[0m"
+echo -e "\e[96m                                             _          ___   \e[0m"
+echo -e "\e[96m                      /\                    | |        |__ \  \e[0m"
+echo -e "\e[96m                     /  \   _ __   __ _  ___| |__   ___   ) | \e[0m"
+echo -e "\e[96m                    / /\ \ | '_ \ / _` |/ __| '_ \ / _ \ / /  \e[0m"
+echo -e "\e[96m                   / ____ \| |_) | (_| | (__| | | |  __// /_  \e[0m"
+echo -e "\e[96m                  /_/    \_\ .__/ \__,_|\___|_| |_|\___|____| \e[0m"
+echo -e "\e[96m                           | |                                \e[0m"
+echo -e "\e[96m			   					     \e[0m"
+			   
+# Apache2 Install 
+echo -e "\e[96m Apache2 Installation \e[0m"
 apt -y install apache2
 systemctl enable apache2
 
-echo -e "\e[96m SSL certificate \e[0m"
+echo -e "\e[96m Generating Self-Signed certificate \e[0m"
 openssl req  -new -x509 -days 3560 -nodes -out /etc/ssl/glpi.pem -keyout /etc/ssl/glpi.pem -subj /C=FR/ST=CVL/L=Tours/O=AIS/OU=LAN/CN=localhost/emailAddress=admin@localhost
 echo
 
+echo -e "\e[96m Creating the vhost conf file \e[0m"
 echo "<VirtualHost *:80>
     #ServerName wemy.ninja
     #ServerAlias www.domain.tld
@@ -102,6 +114,18 @@ sed -i "170,174 {s/^/#/}" /etc/apache2/apache2.conf
 
 systemctl restart apache2
 
+echo -e "\e[96m	================================================================================ \e[0m"
+echo
+echo -e "\e[96m                       __  __        _____  ____  _       \e[0m"
+echo -e "\e[96m                      |  \/  |      / ____|/ __ \| |      \e[0m"
+echo -e "\e[96m                      | \  / |_   _| (___ | |  | | |      \e[0m"
+echo -e "\e[96m                      | |\/| | | | |\___ \| |  | | |      \e[0m"
+echo -e "\e[96m                      | |  | | |_| |____) | |__| | |____  \e[0m"
+echo -e "\e[96m                      |_|  |_|\__, |_____/ \___\_\______| \e[0m"
+echo -e "\e[96m                               __/ |                      \e[0m"
+echo -e "\e[96m                              |___/                       \e[0m"
+echo -e "\e[96m							         \e[0m"
+
 # Install MySQL
 echo -e "\e[96m MySQL installation \e[0m"
 apt install mariadb-server -y
@@ -125,6 +149,18 @@ mysql -u root -pmysql_root_password <  glpidatabase.sql
 rm glpidatabase.sql
 echo
 
+echo -e "\e[96m	================================================================================ \e[0m"
+echo
+echo -e "\e[96m                                     _            \e[0m"
+echo -e "\e[96m                                    | |           \e[0m"
+echo -e "\e[96m                               _ __ | |__  _ __   \e[0m"
+echo -e "\e[96m                              | '_ \| '_ \| '_ \  \e[0m"
+echo -e "\e[96m                              | |_) | | | | |_) | \e[0m"
+echo -e "\e[96m                              | .__/|_| |_| .__/  \e[0m"
+echo -e "\e[96m                              | |         | |     \e[0m"
+echo -e "\e[96m                              |_|         |_|     \e[0m"
+echo -e "\e[96m			                                 \e[0m"
+			      
 # install de php
 echo -e "\e[96m php Installation \e[0m"
 apt update
@@ -132,6 +168,9 @@ apt install -y php
 apt install -y php-curl php-gd php-mysql php-zip php-apcu php-xml php-ldap php-mbstring php-intl php-xmlrpc php-cas php-bz2
 
 systemctl restart apache2
+echo
+
+echo -e "\e[96m	================================================================================ \e[0m"
 echo
 
 # Downloading GLPI
@@ -155,6 +194,8 @@ echo
 echo -e "\e[96m ==> GLPI Database Name :\e[31m glpidb \e[0m"
 echo -e "\e[96m ==> GLPI MySQL User :\e[31m glpiuser \e[0m"
 echo -e "\e[96m ==> GLPI MySQL User Password :\e[31m glpipwd \e[0m"
+echo
+echo -e "\e[96m ==> The Self-Signed Certificate is located here :\e[31m /etc/ssl/ \e[0m"
 echo
 echo -e "\e[96m ==========================================================  \e[0m"
 echo
