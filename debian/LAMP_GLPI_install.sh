@@ -45,6 +45,7 @@ echo -e "\e[96m ==> Login infos at the end \e[0m"
 echo
 read yeahgoahead
 
+apt install -y net-tools dnsutils curl
 IPAddress=$(ifconfig | grep broadcast | awk '{print $2}')
 #MySQL Root Password
 mysqlrootpwd=mysql_root_password
@@ -66,7 +67,8 @@ echo -e "\e[96m                   / ____ \| |_) | (_| | (__| | | |  __// /_  \e[
 echo -e "\e[96m                  /_/    \_\ .__/ \__,_|\___|_| |_|\___|____| \e[0m"
 echo -e "\e[96m                           | |                                \e[0m"
 echo -e "\e[96m			   					     \e[0m"
-			   
+
+
 # Apache2 Install 
 echo -e "\e[96m Apache2 Installation \e[0m"
 apt -y install apache2
