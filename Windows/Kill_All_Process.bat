@@ -1,5 +1,5 @@
 @echo off
-title Arreter tous les processus - Wemy
+title Kill All Process - Wemy
 cd c:\windows\System32
 for /f "skip=3 tokens=1" %%i in ('TASKLIST /FI "USERNAME eq %userdomain%\%username%" /FI "STATUS eq running"') do (
 if not "%%i"=="svchost.exe" (
