@@ -56,7 +56,7 @@ echo -e "\e[96m "
 printf '=%.0s' $(seq 1 $(tput cols))
 echo -e "\e[om "
 echo -e "\t \v \e[96m  Generating self-signed certificate \e[0m \v"
-openssl req -new -x509 -days 3560 -newkey rsa:4096 -nodes -out /etc/pki/tls/certs/nextcloud.crt -keyout /etc/pki/tls/private/nextcloud.key -subj /C=FR/ST=CVL/L=Tours/O=TSSR/OU=LAN/CN=localhost/emailAddress=admin@localhost
+openssl req -new -x509 -days 3560 -newkey rsa:4096 -nodes -out /etc/pki/tls/certs/nextcloud.crt -keyout /etc/pki/tls/private/nextcloud.key -subj /C=FR/ST=CVL/L=Tours/O=AIS/OU=LAN/CN=localhost/emailAddress=admin@localhost
 
 echo -e "\e[96m "
 printf '=%.0s' $(seq 1 $(tput cols))
