@@ -3,6 +3,13 @@
 # Original Author : José DV
 # Modified by : wemy (added the arguments options)
 import random
+import argparse
+
+# for now the argument doesn't do anything, i'll change it later
+parser = argparse.ArgumentParser()
+parser.add_argument('-g', '--groupe', help="Nombres de groupes à constituer", type=int)
+args = parser.parse_args()
+nb_groupe = args.groupe
 
 # Liste des participants fixe
 liste_faces=["Name1", "Name2", "Name3", "Name4", "Name5", "Name6",
