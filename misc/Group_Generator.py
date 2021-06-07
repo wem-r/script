@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # coding: utf-8
 # Original Author : José DV
-# Modified by : wemy (added the arguments options)
+# Modified by : wem-r (added the arguments options)
 import random
 import argparse
 
