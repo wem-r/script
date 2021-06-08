@@ -5,7 +5,6 @@
 import random
 import argparse
 
-# for now the argument doesn't do anything, i'll change it later
 parser = argparse.ArgumentParser()
 parser.add_argument('-g', '--groupe', help="Nombres de groupes à constituer", type=int)
 args = parser.parse_args()
