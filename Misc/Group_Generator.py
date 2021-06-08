@@ -18,10 +18,11 @@ liste_faces=["Name1", "Name2", "Name3", "Name4", "Name5", "Name6",
 if not (args.groupe == None ):
     nombre_groupes = args.groupe
 else:
+    print("You can use -g followed by the number of groupes")
     print('')
     nombre_groupes = input("Combien de groupes à constituer ? ")
     print('')
-    print("You can use -g followed by the number of groupes")
+
 
 # Fonction de tirage au sort
 def tirage():
