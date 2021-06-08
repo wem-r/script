@@ -9,15 +9,17 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('-g', '--groupe', help="Nombres de groupes à constituer", type=int)
 args = parser.parse_args()
-nb_groupe = args.groupe
+# nb_groupe = args.groupe
 
 # Liste des participants fixe
 liste_faces=["Name1", "Name2", "Name3", "Name4", "Name5", "Name6",
              "Name7", "Name8", "Name9", "Name10", "Name11", "Name12",
              "Name13", "Name14", "Name15", "Name16", "Name17"]
 
-# Combien de groupes à constituer ?
-nombre_groupes = input("Combien de groupes à constituer ? ")
+if not (args.groupe == None ):
+    nombre_groupes = args.groupe
+else:
+    nombre_groupes = input("Combien de groupes à constituer ? ")
 
 # Fonction de tirage au sort
 def tirage():
