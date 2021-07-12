@@ -48,3 +48,7 @@ for h in range(len(liste_faces)):
 print()
 for i in range(1, int(nombre_groupes)+1):
     print("GROUPE ", i, ": ", eval("tableau"+str(i)))
+
+print('')
+input("Press Enter to continue ...")
+exit()
