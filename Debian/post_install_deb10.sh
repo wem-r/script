@@ -88,7 +88,7 @@ echo -e "\e[96m Install git \e[0m"
 apt --yes --force-yes install git
 echo
 echo -e "\e[96m Install screen \e[0m"
-apt --yes --for ce-yes install screen
+apt --yes --force-yes install screen
 echo
 echo -e "\e[96mInstall locate \e[0m"
 apt --yes --force-yes install locate
