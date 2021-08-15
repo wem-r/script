@@ -5,6 +5,8 @@ if [ $EUID -ne 0 ]; then
   exit 1
 fi
 
+sed -i 's/buster\/updates/bullseye-security/g' /etc/apt/sources.list
 sed -i 's/buster/bullseye/g' /etc/apt/sources.list
+
 apt update -y ;  apt full-upgrade -y ; apt dist-upgrade -y
 apt autoremove ; apt autoclean
