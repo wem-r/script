@@ -61,7 +61,7 @@ apt update -y ;  apt full-upgrade -y ; apt dist-upgrade -y
 echo
 
 # installation utilitaires usuels du système
-echo -e "\e[96m Install sudo, nmap, zip, dnsutils, net-tools, lynx, curl, git, screen, locate, ncdu \e[0m"
+echo -e "\e[96m Install nmap zip dnsutils net-tools lynx curl git screen locate ncdu apt-transport-https ca-certificates gcc lsb-release neofetch tcpdump tzdata unzip vim ccze \e[0m"
 apt install -y sudo nmap zip dnsutils net-tools lynx curl git screen locate ncdu apt-transport-https ca-certificates gcc lsb-release neofetch tcpdump tzdata unzip vim ccze
 echo
 
