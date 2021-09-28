@@ -1,8 +1,29 @@
+cls
 Import-Module ActiveDirectory
-$Users = Import-Csv -Delimiter ";" -Path "C:\Users\Administrateur\Desktop\script\1K_Users.csv"
+
+$PathCSV = "C:\Users\Administrateur\Desktop\script\1K_Users.csv" # <----- To Change (Tip: Shift+Right clic on the CSV, then "Copy as Path".)
+
+$Users = Import-Csv -Delimiter ";" -Path $PathCSV
 
 foreach ($User in $Users)
 {
+    if ((Get-ADOrganizationalUnit -Filter {Name -eq $OU}) -eq $null) {
+        Write-Output "The Organizational Unit '$OU' does not exist, creating now..."
+        Try {
+            New-ADOrganizationalUnit -Name $OU -Path "DC=$Domain,DC=$Ext"
+            echo "New OU '$OU' created"
+            echo ""
+                }
+        Catch{
+            echo "The Organizational Unit $OU already exist"
+            echo ""
+                }
+                                                                        }
+    Else {
+        Write-Output "The Organizational Unit '$OU' already exist"
+            }
+
+
     $Domain = "no" # <------------- To Change
     $Ext = "lan" # <--------------- To Change
     $Server = "ssprad.no.lan" # <-- To Change
@@ -17,16 +38,12 @@ foreach ($User in $Users)
     $Displayname = $Surname.ToLower() + " " + $GivenName.ToUpper()
     $OU = $User.OU
 
-	Try{
-    New-ADOrganizationalUnit -Name $OU -Path "DC=$Domain,DC=$Ext"
-    
-        echo "New OU $OU created"
-    }
-    catch{
-        echo "The Organizational Unit $OU already exist"
-    }
-	Try{
-	New-ADUser -Surname $Surname `
+
+
+    if ((Get-ADUser -Filter {SamAccountName -eq $SAM}) -eq $null) {
+        Write-Output "User '$Name' not found, adding now..."
+        Try {
+    New-ADUser -Surname $Surname `
                -Name $Name `
                -GivenName $GivenName `
                -SamAccountName $SAM `
@@ -39,11 +56,11 @@ foreach ($User in $Users)
                -ChangePasswordAtLogon $false `
                –PasswordNeverExpires $true `
                -server $Server
-	
-        echo "New User : $Name"
-	}
-	catch{
-	    echo "User not created: $Name"
-	}
-
-}
+    echo "New User '$Name' added in the '$OU' OU"
+    echo ""
+                }
+    Catch{
+        echo "User '$Name' already present"
+            }
+                                                                    }
+    }
