@@ -19,18 +19,18 @@ foreach ($User in $Users)
 	Try{
     New-ADOrganizationalUnit -Name $OU -Path "DC=$Domain,DC=$Ext"
     
-        echo "OU $OU ajouté"
+        echo "New OU $OU created"
     }
     catch{
-        echo "OU $OU déjà existante"
+        echo "The Organizational Unit $OU already exist"
     }
 	Try{
 	New-ADUser -Surname $Surname -Name $Name -GivenName $GivenName -SamAccountName $SAM -UserPrincipalName $UPN -EmailAddress $EmailAddress -DisplayName $Displayname -AccountPassword:(ConvertTo-SecureString -AsPlainText $Password -Force) -Enabled $true -Path "OU=$OU,DC=$Domain,DC=$Ext" -ChangePasswordAtLogon $false –PasswordNeverExpires $true -server $Server
 	
-        echo "Utilisateur ajouté : $Name"
+        echo "New User : $Name"
 	}
 	catch{
-	    echo "Utilisateur non ajouté : $Name"
+	    echo "User not created: $Name"
 	}
 
 }
