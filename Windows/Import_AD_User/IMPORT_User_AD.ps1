@@ -1,19 +1,20 @@
-﻿Import-Module ActiveDirectory
-$Users = Import-Csv -Delimiter ";" -Path "C:\Users\Administrator\Desktop\1K_Users.csv"
+Import-Module ActiveDirectory
+$Users = Import-Csv -Delimiter ";" -Path "C:\Users\Administrateur\Desktop\script\1K_Users.csv"
 
 foreach ($User in $Users)
 {
-    $Domain = "kmr"
-    $Ext = "lan"
-    $Server = "dc1.kmr.lan"
-    $Password = "CHANGE_ME" # If you chose a pwd that doesn't meet the Password Policy (if it wasn't changed) the accounts will be disabled. even when '-Enabled $true' is used
+    $Domain = "no" # <------------- To Change
+    $Ext = "lan" # <--------------- To Change
+    $Server = "ssprad.no.lan" # <-- To Change
+    $Password = "CHANGE_ME"   # <-- To Change - If you choose a pwd that doesn't meet the Password Policy (if it wasn't changed) the accounts will be disabled. even when '-Enabled $true' is used
+    
     $Surname = $User.Surname
-    $Name = $User.Name
     $GivenName = $User.GivenName
-    $SAM = $User.SamAccountName
-    $UPN = $User.UserPrincipalName
-    $EmailAddress = $User.EmailAdress
-    $Displayname = $User.DisplayName
+    $Name = $GivenName.ToUpper() + " " + $Surname
+    $SAM = $Surname.ToLower()[0] + $GivenName.ToLower()
+    $UPN = $Surname.ToLower()[0] + $GivenName.ToLower()
+    $EmailAddress = $SAM.ToLower() + "@" + $Domain.ToLower() + "." + $Ext.ToLower()
+    $Displayname = $Surname.ToLower() + " " + $GivenName.ToUpper()
     $OU = $User.OU
 
 	Try{
@@ -25,7 +26,19 @@ foreach ($User in $Users)
         echo "The Organizational Unit $OU already exist"
     }
 	Try{
-	New-ADUser -Surname $Surname -Name $Name -GivenName $GivenName -SamAccountName $SAM -UserPrincipalName $UPN -EmailAddress $EmailAddress -DisplayName $Displayname -AccountPassword:(ConvertTo-SecureString -AsPlainText $Password -Force) -Enabled $true -Path "OU=$OU,DC=$Domain,DC=$Ext" -ChangePasswordAtLogon $false –PasswordNeverExpires $true -server $Server
+	New-ADUser -Surname $Surname `
+               -Name $Name `
+               -GivenName $GivenName `
+               -SamAccountName $SAM `
+               -UserPrincipalName $UPN `
+               -EmailAddress $EmailAddress `
+               -DisplayName $Displayname `
+               -AccountPassword:(ConvertTo-SecureString -AsPlainText $Password -Force) `
+               -Enabled $true `
+               -Path "OU=$OU,DC=$Domain,DC=$Ext" `
+               -ChangePasswordAtLogon $false `
+               –PasswordNeverExpires $true `
+               -server $Server
 	
         echo "New User : $Name"
 	}
