@@ -5,6 +5,8 @@ foreach ($User in $Users)
 {
     $Domain = "kmr"
     $Ext = "lan"
+    $Server = "dc1.kmr.lan"
+    $Password = "CHANGE_ME" # If you chose a pwd that doesn't meet the Password Policy (if it wasn't changed) the accounts will be disabled. even when '-Enabled $true' is used
     $Surname = $User.Surname
     $Name = $User.Name
     $GivenName = $User.GivenName
@@ -13,9 +15,7 @@ foreach ($User in $Users)
     $EmailAddress = $User.EmailAdress
     $Displayname = $User.DisplayName
     $OU = $User.OU
-    $Server = "dc1.kmr.lan"
-    $Password = "CHANGE_ME" # If you chose a pwd that doesn't meet the Password Policy (if it wasn't changed) the accounts will be disabled. even when '-Enabled $true' is used
-	
+
 	Try{
     New-ADOrganizationalUnit -Name $OU -Path "DC=$Domain,DC=$Ext"
     
