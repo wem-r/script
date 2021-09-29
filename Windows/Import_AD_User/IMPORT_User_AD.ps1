@@ -1,7 +1,7 @@
 cls
 Import-Module ActiveDirectory
 
-$PathCSV = "C:\Users\Administrateur\Desktop\script\1K_Users.csv" # <----- To Change (Tip: Shift+Right clic on the CSV, then "Copy as Path".)
+$PathCSV = "C:\Users\Administrateur\Desktop\script\Users.csv" # <----- To Change (Tip: Shift+Right clic on the CSV, then "Copy as Path".)
 
 $Users = Import-Csv -Delimiter ";" -Path $PathCSV
 
