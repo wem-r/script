@@ -26,7 +26,7 @@ foreach ($User in $Users)
 
     $Domain = "no" # <------------- To Change
     $Ext = "lan" # <--------------- To Change
-    $Server = "ssprad.no.lan" # <-- To Change
+    $Server = "dc1.no.lan" # <-- To Change
     $Password = "CHANGE_ME"   # <-- To Change - If you choose a pwd that doesn't meet the Password Policy (if it wasn't changed) the accounts will be disabled. even when '-Enabled $true' is used
     
     $Surname = $User.Surname
