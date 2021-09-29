@@ -15,6 +15,6 @@ for i in range(10000):
 
 pprint.pprint(tableau)
 
-with open("users.csv", "w") as file:
+with open("Users.csv", "w") as file:
     for element in tableau:
         file.write(f"{str(element[0])};{str(element[1])};{str(element[2])}\n")
