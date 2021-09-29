@@ -9,7 +9,7 @@ tableau=[]
 from faker import Faker
 fake = Faker('en_US')
 
-for i in range(10000):
+for i in range(1000):
     age=random.randint(18,99)
     tableau.append((i,fake.first_name(),fake.last_name()))
 
