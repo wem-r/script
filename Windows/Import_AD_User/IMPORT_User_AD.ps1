@@ -54,7 +54,7 @@ foreach ($User in $Users)
                -Enabled $true `
                -Path "OU=$OU,DC=$Domain,DC=$Ext" `
                -ChangePasswordAtLogon $false `
-               –PasswordNeverExpires $true `
+               -PasswordNeverExpires $true `
                -server $Server
     echo "New User '$Name' added in the '$OU' OU"
     echo ""
