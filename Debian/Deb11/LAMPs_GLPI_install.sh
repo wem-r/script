@@ -1,7 +1,7 @@
 #!/bin/bash
 # Script full install LAMPs + GLPI on Debian 10
-# Wemy - 24/04/2021
-# https://wemy.ninja/ https://ais.wemy.ninja/ & https://github.com/wem-r/script
+# Wemy - 25/08/2022
+# https://github.com/wem-r/script
 clear 
 
 if [ $EUID -ne 0 ]; then
