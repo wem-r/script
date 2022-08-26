@@ -18,7 +18,7 @@ if [ "$(cut -d. -f1 /etc/debian_version)" == "11" ]; then
 else
         echo -e "\e[91m ==================================================================== \e[0m"
         echo -e "\e[91m ==================================================================== \e[0m"
-        echo -e "\e[91m ===      Script not compatible with this version of Debian       === \e[0m" 1>&2
+        echo -e "\e[91m ===    Your Debian version is not compatible with this script    === \e[0m" 1>&2
         echo -e "\e[91m ==================================================================== \e[0m"
         echo -e "\e[91m ==================================================================== \e[0m"
         exit 1
@@ -38,7 +38,8 @@ echo
 echo
 echo
 echo
-echo -e "\e[96m ==> If you want to use custom passwords and Database name, hit ^C and edit this scipt (Lines 50, 52, 54 and 56) \e[0m"
+echo -e "\e[96m ==> If you want to use stronger passwords, change the username and change the Database name: "
+echo -e "\e[33m     hit ^C and edit this script (Lines 50, 52, 54 and 56) \e[0m"
 echo
 echo -e "\e[96m ==> Otherwise, \e[33mPress Enter to continue \e[0m"
 echo -e "\e[96m ==> Login infos at the end \e[0m"
